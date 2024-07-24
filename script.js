@@ -1,4 +1,24 @@
 //your code here
+import 'cypress-drag-drop';
+describe('Drag and Drop Tests', () => {
+    beforeEach(() => {
+        cy.visit('/');
+    });
+
+    it('should drag and drop images correctly', () => {
+        cy.get('#div1').should('exist');
+        cy.get('#div2').should('exist');
+        cy.get('#div3').should('exist');
+        cy.get('#div4').should('exist');
+        cy.get('#div5').should('exist');
+        cy.get('#div6').should('exist');
+        cy.get('#div1').drag('#div2');
+        cy.get('#div2').should('have.attr', 'style').and('include', 'url("https://picsum.photos/id/237/200/300")');
+    });
+});
+cy.get('#div1').then($el => {
+    console.log($el);
+});
 document.addEventListener('DOMContentLoaded', (event) => {
     const images = document.querySelectorAll('.image');
 
